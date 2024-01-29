@@ -1,8 +1,16 @@
-# Get the input from the user
+# Get the input from the user and make sure its exactly 9 digits
 B = []
-for i in range(9):
-    row = input(f"Enter row {i+1}: ")
-    board.append([int(num) for num in row])
+while True:
+    for i in range(9):
+        row = input(f"Enter row {i+1}: ")
+        row = row.replace(" ", "")
+        if len(row) != 9:
+            print("Please enter exactly 9 numbers.")
+            break
+        B.append([int(num) for num in row])
+
+    else:
+        break
 
 
 def solution(board):
@@ -64,7 +72,7 @@ def empty(board):
     return None
 
 
-print_board(B)
+print_board("This is the unsolved Sudoko Puzzle", B)
 solution(B)
 print("\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\n")
-print_board(B)
+print_board("Here is the solved Sudoko Puzzle", B)
